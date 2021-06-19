@@ -40,6 +40,7 @@ public:
   void disableInterruptPin(uint8_t pin);
   uint8_t getLastInterruptPin();
   uint8_t getLastInterruptPinValue();
+  uint8_t getValueAtLastInterrupt(uint8_t pin);
 
 private:
   uint8_t i2caddr;

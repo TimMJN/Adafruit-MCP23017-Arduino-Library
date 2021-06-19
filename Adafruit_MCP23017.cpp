@@ -349,3 +349,17 @@ uint8_t Adafruit_MCP23017::getLastInterruptPinValue() {
 
   return MCP23017_INT_ERR;
 }
+/*!
+ * @brief Gets the value of a pin at the last interrupt
+ * @param pin Pin to read
+ * @return Returns the value of a pin at the last interrupt
+ */
+uint8_t Adafruit_MCP23017::getValueAtLastInterrupt(uint8_t pin) {
+  if (pin != MCP23017_INT_ERR) {
+    uint8_t intcapreg = regForPin(pin, MCP23017_INTCAPA, MCP23017_INTCAPB);
+    uint8_t bit = bitForPin(pin);
+    return (readRegister(intcapreg) >> bit) & (0x01);
+  }
+
+  return MCP23017_INT_ERR;
+}
