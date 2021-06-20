@@ -42,14 +42,16 @@ public:
   uint8_t getLastInterruptPinValue();
   uint8_t getValueAtLastInterrupt(uint8_t pin);
 
-private:
-  uint8_t i2caddr;
-  TwoWire *_wire; //!< pointer to a TwoWire object
-
   uint8_t bitForPin(uint8_t pin);
   uint8_t regForPin(uint8_t pin, uint8_t portAaddr, uint8_t portBaddr);
 
   uint8_t readRegister(uint8_t addr);
+
+private:
+  uint8_t i2caddr;
+  TwoWire *_wire; //!< pointer to a TwoWire object
+
+
   void writeRegister(uint8_t addr, uint8_t value);
 
   /**
